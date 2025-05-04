@@ -1,0 +1,83 @@
+[tool.poetry]
+name = "openvino-tutorial"
+version = "0.1.0"
+description = ""
+authors = ["baibai25 <kamuy.camel.0225@gmail.com>"]
+readme = "README.md"
+packages = [{include = "openvino_tutorial"}]
+
+[tool.poetry.dependencies]
+python = "^3.11.4"
+ipykernel = "^6.29.5"
+openvino = "^2025.1.0"
+huggingface-hub = "^0.30.2"
+opencv-python = "^4.11.0.86"
+tqdm = "^4.67.1"
+matplotlib = "^3.10.1"
+ipywidgets = "^8.1.6"
+torch = "^2.7.0"
+gdown = "^5.2.0"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.11.8"
+mypy = "^1.15.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 88
+indent-width = 4
+
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+    "__pycache__",
+]
+
+[tool.ruff.lint]
+select = ["ALL"]
+
+ignore = [
+    "E501", # line too long, handled by black
+    "B008", # do not perform function calls in argument defaults
+    "B024", # abstract class has no abstract methods
+    "T201", # print
+    "D103", # Docstring
+]
+
+unfixable = [
+    "F401", # module imported but unused
+    "F841", # local variable is assigned to but never used,
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["E402", "F401"]
+"**/{tests,docs,tools}/*" = ["E402"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
